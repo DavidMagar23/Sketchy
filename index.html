@@ -7,9 +7,29 @@
     <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
     <script src="javascript.js" defer></script>
 
+    <!-- Poppins Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&family=Indie+Flower&family=Nunito:ital,wght@0,200;0,300;1,200&family=Open+Sans:wght@300&family=Poppins:wght@200;400&display=swap" rel="stylesheet">
+
     <title>Sketchy</title>
 </head>
-<body>
-    
+<body class="body center">
+    <div class="all">
+        <div class="controls">
+            <div class="grid-control">
+                <div class="grid-columns">
+                    <label for="grid-columns">Columns: </label>
+                    <input type="text" name="grid-columns" id="grid-columns">
+                </div>
+                <div class="grid-rows">
+                    <label for="grid-rows">Rows: </label>
+                    <input type="text" name="grid-rows" id="grid-rows">
+                </div>
+                <button class="new-grid">New Grid</button>
+            </div>
+        </div>
+        <div class="grid-container"></div>
+    </div>
 </body>
 </html>

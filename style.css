@@ -3,3 +3,48 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(rgb(218, 204, 255), rgb(0, 0, 0));
+}
+
+.all {
+    display: flex;
+}
+
+input {
+    width: 6rem;
+    height: 2rem;
+
+    border-radius: 0.5rem;
+}
+
+.grid-container {
+    width: 38rem;
+    height: 32rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.square {
+    flex-grow: 1;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.div-container {
+    display: flex;
+
+    flex-grow: 1;
+}
