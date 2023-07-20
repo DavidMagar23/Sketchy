@@ -9,8 +9,10 @@ let body = document.querySelector('body'),
 let columns = 16, rows = 16, grid = [];
 
 // Initialize Array for grid
-for (let i = 0; i < columns; i++) {
+function initializeGrid () {
+    for (let i = 0; i < rows; i++) {
         grid[i] = [];
+}
 }
 
 // Delete Grid and Grid Array 
@@ -34,6 +36,7 @@ function makeGrid (columns, rows) {
 }
 
 // Invoke on load
+initializeGrid ();
 makeGrid(columns,rows);
 
 // New grid Button 
@@ -43,6 +46,11 @@ newGrid.addEventListener("click", () => {
     columns = +gridColumns.value;
     rows = +gridRows.value;
 
+    if ( columns > 64 || rows > 64 ) {
+        columns = 64;
+        rows = 64;
+    }
+    initializeGrid();
     makeGrid(columns,rows);
 })
 

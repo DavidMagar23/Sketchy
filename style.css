@@ -29,8 +29,8 @@ input {
 }
 
 .grid-container {
-    width: 38rem;
-    height: 32rem;
+    width: 34rem;
+    height: 34rem;
 
     display: flex;
     flex-direction: column;
@@ -45,6 +45,5 @@ input {
 
 .div-container {
     display: flex;
-
     flex-grow: 1;
 }
