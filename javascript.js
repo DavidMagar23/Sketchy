@@ -3,7 +3,9 @@ let body = document.querySelector('body'),
     gridContainer = document.querySelector('.grid-container'),
     newGrid = document.querySelector('.new-grid'),
     gridColumns = document.querySelector('#grid-columns'),
-    gridRows = document.querySelector('#grid-rows');
+    gridRows = document.querySelector('#grid-rows'),
+    colorPck = document.querySelector('#color-pick'),
+    clickToggle = false;
 
 // Variables
 let columns = 16, rows = 16, grid = [];
@@ -35,9 +37,43 @@ function makeGrid (columns, rows) {
     }
 }
 
+function makeGridHover () {
+    let squares = document.querySelectorAll('.square')
+    squares.forEach(addGridHover);
+}
+
+function addGridHover (square) {
+    square.addEventListener("mousedown", (e) => {
+        clickToggle = true;
+    })
+    square.addEventListener("mouseup", (e) => {
+        clickToggle = false;
+    })
+    square.addEventListener("dragstart", (e) => {
+        e.preventDefault();
+    })
+    square.addEventListener("drop", (e) => {
+        e.preventDefault();
+    })
+
+    square.addEventListener("click", (e) => {
+        e.target.style.backgroundColor = "red";
+    })
+    square.addEventListener("mousemove", (e) => {
+        if (clickToggle == true) {
+            e.target.style.backgroundColor = "red";
+        }
+    })
+    square.addEventListener("contextmenu", (e) => {
+        e.target.style.backgroundColor = "white";
+        e.preventDefault();
+    })
+}
+
 // Invoke on load
 initializeGrid ();
 makeGrid(columns,rows);
+makeGridHover();
 
 // New grid Button 
 newGrid.addEventListener("click", () => {
@@ -50,8 +86,15 @@ newGrid.addEventListener("click", () => {
         columns = 64;
         rows = 64;
     }
+
+    if (columns == 0 || rows == 0) {
+        columns = 16;
+        rows = 16;
+    }
+
     initializeGrid();
     makeGrid(columns,rows);
+    makeGridHover();
 })
 
 
