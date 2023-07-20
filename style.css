@@ -14,18 +14,41 @@ body {
     min-height: 100vh;
 
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(rgb(218, 204, 255), rgb(0, 0, 0));
+    background: linear-gradient(rgb(204, 232, 255), rgb(163, 146, 241));
+    flex-direction: column;
 }
 
 .all {
+    width: 100vw;
+
     display: flex;
+
+    gap: 5rem;
 }
 
-input {
-    width: 6rem;
-    height: 2rem;
+.color {
+    width: 3rem;
+    height: 3rem;
+    border: none;
+    appearance: none;
+    cursor: pointer;
+    background-color: transparent;
+}
 
-    border-radius: 0.5rem;
+.color::-webkit-color-swatch{
+    border-radius: 1rem;
+    border: none;
+}
+
+.color::-moz-color-swatch {
+    border-radius: 1rem;
+    border: none;
+}
+
+.primary,
+.secondary {
+    display: flex;
+    flex-direction: column;
 }
 
 .grid-container {
@@ -47,3 +70,60 @@ input {
     display: flex;
     flex-grow: 1;
 }
+
+.number {
+    all:unset;
+    width: 4rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    border: none;
+    appearance: none;
+    background-color: white;
+    padding: 0 0.25rem;
+}
+
+.grid-rows,
+.grid-columns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+.color-controls,
+.grid-controls {
+    margin: 0 auto;
+}
+
+.color-controls {
+    left: 1rem;
+}
+
+.grid-controls {
+    right: 1rem;
+}
+
+header,
+footer {
+    position: fixed;
+
+    padding: 0.4rem 0;
+
+    width: 100vw;
+
+    background-color: black;
+    color: white;
+    font-size: 1rem;
+
+    text-align: center;
+}
+
+header {
+    top: 0;
+}
+
+footer {
+    bottom: 0;
+}
+

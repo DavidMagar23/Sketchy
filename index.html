@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
     <script src="javascript.js" defer></script>
@@ -15,32 +16,40 @@
     <title>Sketchy</title>
 </head>
 <body class="body center">
+    <header>
+        <h3>~ Sketchy ~</h3>
+    </header>
+
     <div class="all">
-        <div class="controls">
-            <div class="grid-control">
-                <div class="grid-columns">
-                    <label for="grid-columns">Columns: </label>
-                    <input type="text" name="grid-columns" id="grid-columns">
+        <div class="color-controls">
+            <div class="color-control">
+                <div class="primary">
+                    <label for="new-color-pick">Primary color : </label>
+                    <input type="color" id="new-color-pick" class="color">
                 </div>
+                <div class="secondary">
+                    <label for="erase-color-pick">Erase color : </label>
+                    <input type="color" id="erase-color-pick" value="#ffffff" class="color">
+                </div>
+            </div>
+        </div>
+        <div class="grid-container"></div>
+        <div class="grid-controls">
+            <div class="grid-control">
                 <div class="grid-rows">
                     <label for="grid-rows">Rows: </label>
-                    <input type="text" name="grid-rows" id="grid-rows">
+                    <input type="text" name="grid-rows" id="grid-rows" class="number">
+                </div>
+                <div class="grid-columns">
+                    <label for="grid-columns">Columns: </label>
+                    <input type="text" name="grid-columns" id="grid-columns" class="number">
                 </div>
                 <button class="new-grid">New Grid</button>
             </div>
-            <div class="color-control">
-                <div>
-                    <label for="new-color-pick">Pick a color: </label>
-                    <input type="color" id="new-color-pick">
-                </div>
-                <div>
-                    <label for="erase-color-pick">Erase color: </label>
-                    <input type="color" id="erase-color-pick">
-                </div>
-            </div>
-
         </div>
-        <div class="grid-container"></div>
     </div>
+    <footer>
+        <h3>@DavidMagar2023</h3>
+    </footer>
 </body>
 </html>

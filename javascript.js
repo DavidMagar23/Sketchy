@@ -108,3 +108,4 @@ newGrid.addEventListener("click", () => {
     makeGrid(columns,rows);
     makeGridHover();
 })
+
