@@ -4,11 +4,23 @@ let body = document.querySelector('body'),
     newGrid = document.querySelector('.new-grid'),
     gridColumns = document.querySelector('#grid-columns'),
     gridRows = document.querySelector('#grid-rows'),
-    colorPck = document.querySelector('#color-pick'),
+    colorPick = document.querySelector('#new-color-pick'),
+    erasePick = document.querySelector('#erase-color-pick'),
+    colorValue = colorPick.value,
+    eraseValue = erasePick.value,
     clickToggle = false;
 
 // Variables
 let columns = 16, rows = 16, grid = [];
+
+// Color pick change 
+colorPick.addEventListener("input", (e) => {
+    colorValue = colorPick.value;
+})
+
+erasePick.addEventListener("input", (e) => {
+    eraseValue = erasePick.value;
+})
 
 // Initialize Array for grid
 function initializeGrid () {
@@ -57,15 +69,15 @@ function addGridHover (square) {
     })
 
     square.addEventListener("click", (e) => {
-        e.target.style.backgroundColor = "red";
+        e.target.style.backgroundColor = colorValue;
     })
     square.addEventListener("mousemove", (e) => {
         if (clickToggle == true) {
-            e.target.style.backgroundColor = "red";
+            e.target.style.backgroundColor = colorValue;
         }
     })
     square.addEventListener("contextmenu", (e) => {
-        e.target.style.backgroundColor = "white";
+        e.target.style.backgroundColor = eraseValue;
         e.preventDefault();
     })
 }
@@ -96,5 +108,3 @@ newGrid.addEventListener("click", () => {
     makeGrid(columns,rows);
     makeGridHover();
 })
-
-
