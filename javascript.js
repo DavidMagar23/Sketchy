@@ -8,7 +8,8 @@ let body = document.querySelector('body'),
     erasePick = document.querySelector('#erase-color-pick'),
     colorValue = colorPick.value,
     eraseValue = erasePick.value,
-    clickToggle = false;
+    clickToggle = false,
+    altClickToggle = false;
 
 // Variables
 let columns = 16, rows = 16, grid = [];
@@ -56,9 +57,15 @@ function makeGridHover () {
 
 function addGridHover (square) {
     square.addEventListener("mousedown", (e) => {
-        clickToggle = true;
+        if (e.buttons == 2) {
+            altClickToggle = true;
+        }
+        else {
+            clickToggle = true;
+        }
     })
     square.addEventListener("mouseup", (e) => {
+        altClickToggle = false;
         clickToggle = false;
     })
     square.addEventListener("dragstart", (e) => {
@@ -75,7 +82,11 @@ function addGridHover (square) {
         if (clickToggle == true) {
             e.target.style.backgroundColor = colorValue;
         }
-    })
+        else if (altClickToggle == true) {
+            e.target.style.backgroundColor = eraseValue;
+        }
+    });
+
     square.addEventListener("contextmenu", (e) => {
         e.target.style.backgroundColor = eraseValue;
         e.preventDefault();
