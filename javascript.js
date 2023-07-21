@@ -119,7 +119,7 @@ function addGridHover (square) {
 
     square.addEventListener("mouseover", (e) => {
         if (rainbowToggle == true && rainbowClicked == true) {
-            e.target.style.backgroundColor = `hsl(${Math.random() * 361}, ${Math.floor(Math.random() * (100 - 30) ) + 30}%, ${Math.floor(Math.random() * (90 - 10) ) + 10}%)`;
+            e.target.style.backgroundColor = `hsl(${Math.random() * 361}, ${Math.floor(Math.random() * (100 - 30) ) + 30}%, ${Math.floor(Math.random() * (75 - 10) ) + 10}%)`;
         }
     })
 
