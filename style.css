@@ -47,6 +47,11 @@ body {
     border: none;
 }
 
+#rainbow-color-pick {
+    background: linear-gradient(red 0%, green 33%, blue 66%);
+    border-radius: 1.75em;
+}
+
 .primary,
 .secondary {
     display: flex;

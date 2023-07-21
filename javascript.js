@@ -6,11 +6,16 @@ let body = document.querySelector('body'),
     gridRows = document.querySelector('#grid-rows'),
     colorPick = document.querySelector('#new-color-pick'),
     erasePick = document.querySelector('#erase-color-pick'),
+    rainbowPick = document.querySelector('.rainbow-container'),
     all = document.querySelector('.all'),
     colorValue = colorPick.value,
     eraseValue = erasePick.value,
     clickToggle = false,
-    altClickToggle = false;
+    altClickToggle = false,
+    rainbowToggle = false,
+    rainbowClicked = false,
+    rainbowPressed = false;
+
 
 // Variables
 let columns = 16, rows = 16, grid = [];
@@ -59,18 +64,25 @@ function makeGridHover () {
 }
 
 function addGridHover (square) {
+    // Rainbow input 
+    rainbowPick.addEventListener("click", (e) => {
+        rainbowPressed = true;
+        rainbowToggle = true;
+    })
+
     square.addEventListener("mousedown", (e) => {
-        if (e.buttons == 2) {
+        if (rainbowToggle == true) {
+            rainbowClicked = true;
+            e.target.style.backgroundColor = `hsla(${Math.random() * 361}, ${Math.floor(Math.random() * (100 - 50) ) + 50}%, ${Math.floor(Math.random() * (100))}%)`;
+        }
+        else if (e.buttons == 2) {
             altClickToggle = true;
         }
         else {
             clickToggle = true;
         }
     })
-    square.addEventListener("mouseup", (e) => {
-        altClickToggle = false;
-        clickToggle = false;
-    })
+ 
     square.addEventListener("dragstart", (e) => {
         e.preventDefault();
     })
@@ -79,16 +91,37 @@ function addGridHover (square) {
     })
 
     square.addEventListener("click", (e) => {
-        e.target.style.backgroundColor = colorValue;
+        if (!rainbowPressed) {
+            e.target.style.backgroundColor = colorValue;
+        }
+       else {
+        rainbowPressed = false;
+       }
     })
+
+    square.addEventListener("mouseup", (e) => {
+        altClickToggle = false;
+        clickToggle = false;
+        rainbowToggle = false;
+        rainbowClicked = false;
+    })
+
     square.addEventListener("mousemove", (e) => {
-        if (clickToggle == true) {
+        if (rainbowToggle == true) {
+        }
+        else if (clickToggle == true) {
             e.target.style.backgroundColor = colorValue;
         }
         else if (altClickToggle == true) {
             e.target.style.backgroundColor = eraseValue;
         }
     });
+
+    square.addEventListener("mouseover", (e) => {
+        if (rainbowToggle == true && rainbowClicked == true) {
+            e.target.style.backgroundColor = `hsl(${Math.random() * 361}, ${Math.floor(Math.random() * (100 - 50) ) + 50}%, ${Math.floor(Math.random() * (80 - 10) ) + 10}%)`;
+        }
+    })
 
     square.addEventListener("contextmenu", (e) => {
         e.target.style.backgroundColor = eraseValue;
@@ -98,6 +131,8 @@ function addGridHover (square) {
     gridContainer.addEventListener("mouseleave", (e) => {
         clickToggle = false;
         altClickToggle = false;
+        rainbowToggle = false;
+        rainbowClicked = false;
     })
 }
 
