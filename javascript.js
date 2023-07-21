@@ -6,6 +6,7 @@ let body = document.querySelector('body'),
     gridRows = document.querySelector('#grid-rows'),
     colorPick = document.querySelector('#new-color-pick'),
     erasePick = document.querySelector('#erase-color-pick'),
+    all = document.querySelector('.all'),
     colorValue = colorPick.value,
     eraseValue = erasePick.value,
     clickToggle = false,
@@ -17,10 +18,12 @@ let columns = 16, rows = 16, grid = [];
 // Color pick change 
 colorPick.addEventListener("input", (e) => {
     colorValue = colorPick.value;
+    newGrid.style.background = `linear-gradient(${colorValue} 50%, ${eraseValue})`;
 })
 
 erasePick.addEventListener("input", (e) => {
     eraseValue = erasePick.value;
+    newGrid.style.background = `linear-gradient(${colorValue}, ${eraseValue})`;
 })
 
 // Initialize Array for grid
@@ -91,6 +94,11 @@ function addGridHover (square) {
         e.target.style.backgroundColor = eraseValue;
         e.preventDefault();
     })
+
+    gridContainer.addEventListener("mouseleave", (e) => {
+        clickToggle = false;
+        altClickToggle = false;
+    })
 }
 
 // Invoke on load
@@ -102,15 +110,18 @@ makeGridHover();
 newGrid.addEventListener("click", () => {
     deleteGrid();
 
-    columns = +gridColumns.value;
-    rows = +gridRows.value;
+    columns = gridColumns.value;
+    rows = gridRows.value;
+
+    // console.log(typeof columns);
+    // console.log(typeof rows);
 
     if ( columns > 64 || rows > 64 ) {
         columns = 64;
         rows = 64;
     }
 
-    if (columns == 0 || rows == 0) {
+    if (columns <= 0 || rows <= 0 ) {
         columns = 16;
         rows = 16;
     }
@@ -120,3 +131,14 @@ newGrid.addEventListener("click", () => {
     makeGridHover();
 })
 
+// Make Undraggable and Un-contextmenu-able
+all.addEventListener("dragstart", (e) => {
+    e.preventDefault();
+})
+all.addEventListener("drop", (e) => {
+    e.preventDefault();
+})
+
+all.addEventListener("contextmenu", (e) => {
+    e.preventDefault();
+})

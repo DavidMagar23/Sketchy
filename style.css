@@ -14,6 +14,7 @@ body {
     min-height: 100vh;
 
     font-family: 'Poppins', sans-serif;
+    user-select: none;
     background: linear-gradient(rgb(204, 232, 255), rgb(163, 146, 241));
     flex-direction: column;
 }
@@ -23,7 +24,8 @@ body {
 
     display: flex;
 
-    gap: 5rem;
+    justify-content: space-between;
+    gap: 8em;
 }
 
 .color {
@@ -52,12 +54,15 @@ body {
 }
 
 .grid-container {
-    width: 34rem;
-    height: 34rem;
+    width: 34em;
+    height: 34em;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    box-shadow: 4px 4px 10px black;
+    border-radius: 1px;
 }
 
 .square {
@@ -73,8 +78,8 @@ body {
 
 .number {
     all:unset;
-    width: 4rem;
-    height: 2rem;
+    width: 3rem;
+    height: 2.1rem;
     border-radius: 0.5rem;
     border: none;
     appearance: none;
@@ -86,22 +91,37 @@ body {
 .grid-columns {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    gap: 2rem;
-    margin-bottom: 1rem;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+    flex-direction: column;
+    gap: 0.3rem;
 }
 
 .color-controls,
 .grid-controls {
-    margin: 0 auto;
+    width: 100px;
+    flex-grow: 1;
 }
 
 .color-controls {
-    left: 1rem;
+    padding-left: 6em;
 }
 
 .grid-controls {
-    right: 1rem;
+    padding-right: 6em;
+}
+
+.new-grid {
+    margin-top: 0.4em;
+    border-radius: 0.3rem;
+    padding: 0.6rem;
+    background: linear-gradient(rgb(255, 255, 255), rgb(255, 220, 220));
+    border: none;
+    box-shadow: 3px 3px 4px black;
+}
+
+.button-label {
+    display: flex;
 }
 
 header,
@@ -127,3 +147,27 @@ footer {
     bottom: 0;
 }
 
+@media only screen and (max-width: 1030px) {
+    body {
+        font-size: 13px;
+    }
+
+    .grid-container {
+        width: 33em;
+        height: 33em;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    body {
+        font-size: 12px;
+    }
+}
+
+
+@media only screen and (max-height: 700px) {
+     .grid-container {
+        width: 30em;
+        height: 30em;
+     }
+}
